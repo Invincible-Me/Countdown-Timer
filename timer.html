@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Countown</title>
+	<style type="text/css">
+		.countdown {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform : translateX(-50%) translateY(-50%);
+			text-align: center;;
+			background: #ddd;
+			border: 1px solid #999;
+			padding: 10px;
+			color: rgb(57, 94, 46);
+			box-shadow: 11px 11px 11px 11px rgba(33,33,33,.2);
+			/*box-shadow: 20px 20px 20px 20px;*/
+		}
+		.countdown:hover {
+			/*box-shadow: 0 0 11px rgba(33,33,33,.2);*/
+			box-shadow: 20px 20px 20px 20px;
+			color: green;
+		}
+		.info {
+			font-size: 70px;
+		}
+	</style>
+</head>
+<body>
+      <table class="countdown">
+      	<tr class="info">
+      		<td colspan="4">Countdown Timer</td>
+      	</tr>
+      	<tr class="info">
+      		<td id="days">120</td>
+      		<td id="hours">4</td>
+      		<td id="minutes">12</td>
+      		<td id="seconds">42</td>
+      	</tr>
+      	<tr>
+      		<td>Days</td>
+      		<td>Hours</td>
+      		<td>Minutes</td>
+      		<td>Seconds</td>
+      	</tr>
+      </table>
+      <script type="text/javascript">
+      	
+      	function countdown(){
+      		var now = new Date();
+      		var eventDate = new Date(2019, 8, 30);
+
+      		var currentTime = now.getTime();
+      		var finalTime = eventDate.getTime();
+
+      		var remainingTime = finalTime - currentTime;
+
+      		var s = Math.floor(remainingTime / 1000);
+      		var m = Math.floor(s / 60);
+      		var h = Math.floor(m / 60);
+      		var d = Math.floor(h / 24);
+
+      		h %= 24;
+      		m %= 60;
+      		s %= 60;
+
+      		if(h < 10){
+      			h = "0" + h;
+      		}
+      		if(m < 10){
+      			m = "0" + m;
+      		}
+      		if(s < 10){
+      			s = "0" + s;
+      		}
+
+      		document.getElementById("days").textContent = d;
+      		document.getElementById("hours").textContent = h;
+      		document.getElementById("minutes").textContent = m;
+      		document.getElementById("seconds").textContent = s;
+
+      		setTimeout(countdown, 1000);
+      	}
+      	  countdown();
+      </script>
+</body>
+</html>
